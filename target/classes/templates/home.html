@@ -1,12 +1,32 @@
 <html>
 <body>
 <center>
+    {{^user}}
+<form action="/login" method="post">
+    <input type="text" placeholder="Username" name="userName" required/>
+    <input type="password" placeholder="Password" name="password" required/>
+    <button type="submit">Login</button>
+</form>
+{{/user}}
+    <img src="http://img09.deviantart.net/73a4/i/2013/134/8/4/superjail_supertrip_by_lennycarl1234-d659bai.jpg" alt="SuperJail" style="width:1250px;height:530px;">
+
+</center>
+{{#user}}
+Welcome, {{name}}!
+<form action="/logout" method="post">
+    <button type="submit">Logout</button>
+</form>
+
+<br><br>
+
+<center>
 <form action="/searchByName" method="get">
     <input type="text" placeholder="Search" name="search"/>
     <button type="submit">Search</button>
 </form>
 </center>
 <br><br>
+
 <center>
 <form action="/add-todo" method="post">
     <input type="text" placeholder="Enter text" name="todoName"/>
@@ -22,7 +42,7 @@
         (Done!)
         {{/is_done}}
         {{^is_done}}
-        (Do it!)
+        (Do It!)
         {{/is_done}}
         <a href="/delete?toDoID={{id}}">delete</a> <a href="/modify?toDoID={{id}}">toggle</a>
     </li>
@@ -32,5 +52,6 @@
 <center>
     <img src="http://media.giphy.com/media/Z0dvuZszc3r3i/giphy.gif" alt="Do It gif" style="width:540px;height:300px;">
 </center>
+{{/user}}
 </body>
 </html>
