@@ -1,0 +1,36 @@
+<html>
+<body>
+<center>
+<form action="/searchByName" method="get">
+    <input type="text" placeholder="Search" name="search"/>
+    <button type="submit">Search</button>
+</form>
+</center>
+<br><br>
+<center>
+<form action="/add-todo" method="post">
+    <input type="text" placeholder="Enter text" name="todoName"/>
+
+    <button type="submit">Add</button>
+</form>
+</center>
+<center>
+<ol>
+    {{#todos}}
+    <li>{{text}}
+        {{#is_done}}
+        (Done!)
+        {{/is_done}}
+        {{^is_done}}
+        (Do it!)
+        {{/is_done}}
+        <a href="/delete?toDoID={{id}}">delete</a> <a href="/modify?toDoID={{id}}">toggle</a>
+    </li>
+    {{/todos}}
+</ol>
+</center>
+<center>
+    <img src="http://media.giphy.com/media/Z0dvuZszc3r3i/giphy.gif" alt="Do It gif" style="width:540px;height:300px;">
+</center>
+</body>
+</html>
